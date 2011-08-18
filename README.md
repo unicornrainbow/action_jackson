@@ -49,6 +49,10 @@ which is equivalent to...
     def index
     end
     
+    def load_user
+      @user = User.find(params[:user_id])
+    end
+    
 But the fun doesn't stop there. We can define before filters for our before filters.
 
     action :index => :load_user do
