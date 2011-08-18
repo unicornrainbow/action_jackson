@@ -42,7 +42,7 @@ Need a before filter? Wire it up like this.
       @user = User.find(params[:user_id])
     end
     
-The above is equivalent to.
+which is equivalent to...
 
     before_filter :load_user, :only => :index
     
