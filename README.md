@@ -33,6 +33,15 @@ Define your actions like this within your controller.
     action :index do
     end
     
+*Important Note:* Until I find a better way, you'll also have to add a call to `register_filters` to the bottom of any class that uses action-jackson. So the above in its entirety might look like this.
+
+    class MyController < ApplicationController
+      action :index do
+      end
+      
+      register_filters # Don't forget this call. It's Important!
+    end
+    
 Need a before filter? Wire it up like this.
 
     action :index => :load_user do
