@@ -69,8 +69,20 @@ Lastly, you can also define multiple dependencies with an Array and they'll be e
   
 Keep in mind actions can depend on actions, filters can depend on filters, actions on filters, filters on actions, on and on and so forth. The dependency heirarchy can get very deep and complicated, but thanks to action-jackson your code doesn't have to.
 
+### Gotchas
 
-
+If you're using `return` in your actions you'll want to switch it out with `next` otherwise you'll receive an error.
     
+    def index
+      return unless param[:id]
+      @item = Item.find(param[:id])
+    end
+
+becomes...
+
+    action :index do
+      next unless param[:id]
+      @item = Item.find(param[:id])
+    end
 
 
